@@ -128,10 +128,10 @@ function Pendency(id, title, description, dateCreation) {
     };
 
     this.setId = function (id) {
-        if(isNaN(id)){
+        if (isNaN(id)) {
             throw "id must be a integer ( Pendency.setId(id:integer) )"
         }
-        
+
         mId = id;
     };
 
@@ -337,8 +337,8 @@ function Notes() {
      * Remove note by index
      * @param {integer} index 
      */
-    this.remove = function(index) {
-        notes.splice(index,1);
+    this.remove = function (index) {
+        notes.splice(index, 1);
     }
 
     /**
@@ -347,5 +347,101 @@ function Notes() {
     this.clear = function () {
         notes = [];
     }
-    
+
+}
+
+/**
+ * represent a file object
+ * @param {integer} id unique identification for the file
+ * @param {string} path path to get the file
+ * @param {string} alias alias to the file
+ */
+function File(id, path, alias) {
+    let mId = id;
+    let mPath = path;
+    let mAlias = alias;
+
+    // getters and setters
+
+    this.getId = function () {
+        return mId;
+    };
+
+    this.setId = function (id) {
+        mId = id;
+    };
+
+    this.getPath = function () {
+        return mPath;
+    };
+
+    this.setPath = function (path) {
+        mPath = path;
+    };
+
+    this.getAlias = function () {
+        return mAlias;
+    }
+
+    this.setAlias = function (alias) {
+        mAlias = alias;
+    }
+}
+
+/**
+ * collection of Files
+ */
+function Files () {
+    let files = [];
+
+    /**
+     * Add a existent object file
+     * @param {File} file 
+     */
+    this.add = function(file) {
+        files.push(file);
+    };
+
+    /**
+     * add a new file to the collection and return it
+     * @param {integer} id 
+     * @param {string} path 
+     * @param {string} alias 
+     */
+    this.addNewFile = function (id, path, alias) {
+        let f = new File(id, path, alias);
+
+        files.push(f);
+        return f;
+    };
+
+    /**
+     * Get the file by index
+     * @param {integer} index 
+     */
+    this.getFile = function(index) {
+        return files[index];
+    };
+
+    /**
+     * return the length of the collection
+     */
+    this.count = function() {
+        return files.length;
+    };
+
+    /**
+     * Remove a object file from the collection by index
+     * @param {integer} index 
+     */
+    this.remove = function (index) {
+        files.splice(index,1);
+    };
+
+    /**
+     * clear the collection
+     */
+    this.clear = function () {
+        files = [];
+    };
 }
