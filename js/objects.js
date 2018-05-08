@@ -26,12 +26,11 @@ function User(name, login) {
 }
 
 /**
- * Collection of User
+ * Collection of User with access
  */
-function Users() {
+function QualifiedUsers() {
     let users = []; // store the object users
     let access = []; // store the type of access of them
-
     /**
      * this function add a new user by a existent User instancy
      * @param {User} user // a User object
@@ -47,7 +46,7 @@ function Users() {
         if (isNaN(typeAccess)) {
             throw "typeAccess must be a Integer (Users.add(user:User,[typeAccess:integer]=0))"
         }
-
+        
         users.push(user); // add the user
         access.push(typeAccess); // add the type of access as a integer in the user same index
     };
@@ -58,7 +57,7 @@ function Users() {
      * @param {string} login 
      * @param {Integer} typeAccess 
      */
-    this.addNewUser = function (name, login, typeAccess = 0) {
+    this.addNewUser = function (name, login, tpAccess = 0) {
 
         // ensure that typeAccess is a number
         if (isNaN(typeAccess)) {
@@ -70,7 +69,7 @@ function Users() {
         users.push(u); // add a new user to array
         access.push(typeAccess); // add a type of access in the same index
 
-        return u; // return the recently created user
+        return {user:u, typeAccess:tpAccess}; // return the recently created user with his respective access
     };
 
     /**
@@ -82,7 +81,7 @@ function Users() {
         if (isNaN(index)) {
             throw "you must provide a integer parameter ( Users.getUser(index:Integer) )"
         }
-        return [users[index], access[index]];
+        return {user:users[index], typeAcess:access[index]};
     }
 
     // remove users by index
@@ -102,6 +101,7 @@ function Users() {
 
     this.clear = function () {
         users = [];
+        acess = [];
     };
 }
 
