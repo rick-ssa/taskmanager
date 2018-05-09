@@ -46,7 +46,7 @@ function QualifiedUsers() {
         if (isNaN(typeAccess)) {
             throw "typeAccess must be a Integer (Users.add(user:User,[typeAccess:integer]=0))"
         }
-        
+
         users.push(user); // add the user
         access.push(typeAccess); // add the type of access as a integer in the user same index
     };
@@ -69,7 +69,7 @@ function QualifiedUsers() {
         users.push(u); // add a new user to array
         access.push(typeAccess); // add a type of access in the same index
 
-        return {user:u, typeAccess:tpAccess}; // return the recently created user with his respective access
+        return { user: u, typeAccess: tpAccess }; // return the recently created user with his respective access
     };
 
     /**
@@ -81,7 +81,7 @@ function QualifiedUsers() {
         if (isNaN(index)) {
             throw "you must provide a integer parameter ( Users.getUser(index:Integer) )"
         }
-        return {user:users[index], typeAcess:access[index]};
+        return { user: users[index], typeAcess: access[index] };
     }
 
     // remove users by index
@@ -391,14 +391,14 @@ function File(id, path, alias) {
 /**
  * collection of Files
  */
-function Files () {
+function Files() {
     let files = [];
 
     /**
      * Add a existent object file
      * @param {File} file 
      */
-    this.add = function(file) {
+    this.add = function (file) {
         files.push(file);
     };
 
@@ -419,14 +419,14 @@ function Files () {
      * Get the file by index
      * @param {integer} index 
      */
-    this.getFile = function(index) {
+    this.getFile = function (index) {
         return files[index];
     };
 
     /**
      * return the length of the collection
      */
-    this.count = function() {
+    this.count = function () {
         return files.length;
     };
 
@@ -435,7 +435,7 @@ function Files () {
      * @param {integer} index 
      */
     this.remove = function (index) {
-        files.splice(index,1);
+        files.splice(index, 1);
     };
 
     /**
@@ -444,4 +444,153 @@ function Files () {
     this.clear = function () {
         files = [];
     };
+}
+
+function Task() {
+    let mId;
+    let mTitle;
+    let mDescription;
+    let mCreator;
+    let mTeam;
+    let mPriority;
+    let mType;
+    let mParent;
+    let mChildren;
+    let mNotes;
+    let mPendencys;
+    let mFiles;
+    let mDeadLine;
+    let mDateStart
+    let mDateCreation;
+    let mDateFinish;
+    
+    function getId () {
+        return mId;
+    }
+    
+    function setId (Id) {
+        mId = Id;
+    }
+
+    function getTitle () {
+        return mTitle;
+    }
+    
+    function setTitle (Title) {
+        mTitle = Title;
+    }
+
+    function getDescription () {
+        return mDescription;
+    }
+    
+    function setDescription (Description) {
+        mDescription = Description;
+    }
+
+    function getCreator () {
+        return mCreator;
+    }
+    
+    function setCreator (Creator) {
+        mCreator = Creator;
+    }
+
+    function getTeam () {
+        return mTeam;
+    }
+    
+    function setTeam (Team) {
+        mTeam = Team;
+    }
+
+    function getPriority () {
+        return mPriority;
+    }
+    
+    function setPriority (Priority) {
+        mPriority = Priority;
+    }
+
+    function getType () {
+        return mType;
+    }
+    
+    function setType (Type) {
+        mType = Type;
+    }
+
+    function getParent () {
+        return mParent;
+    }
+    
+    function setParent (Parent) {
+        mParent = Parent;
+    }
+
+    function getChildren () {
+        return mChildren;
+    }
+    
+    function setChildren (Children) {
+        mChildren = Children;
+    }
+
+    function getNotes () {
+        return mNotes;
+    }
+    
+    function setNotes (Notes) {
+        mNotes = Notes;
+    }
+
+    function getPendencys () {
+        return mPendencys;
+    }
+    
+    function setPendencys (Pendencys) {
+        mPendencys = Pendencys;
+    }
+
+    function getFiles () {
+        return mFiles;
+    }
+    
+    function setFiles (Files) {
+        mFiles = Files;
+    }
+
+    function getDeadLine () {
+        return mDeadLine;
+    }
+    
+    function setDeadLine (DeadLine) {
+        mDeadLine = DeadLine;
+    }
+
+    function getDateStart () {
+        return mDateStart;
+    }
+    
+    function setDateStart (DateStart) {
+        mDateStart = DateStart;
+    }
+
+    function getDateCreation () {
+        return mDateCreation;
+    }
+    
+    function setDateCreation (DateCreation) {
+        mDateCreation = DateCreation;
+    }
+
+    function getDateFinish () {
+        return mDateFinish;
+    }
+    
+    function setDateFinish (DateFinish) {
+        mDateFinish = DateFinish;
+    }
+
+
 }
