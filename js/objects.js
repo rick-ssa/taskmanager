@@ -57,7 +57,7 @@ function QualifiedUsers() {
      * @param {string} login 
      * @param {Integer} typeAccess 
      */
-    this.addNewUser = function (name, login, tpAccess = 0) {
+    this.addNewQUser = function (name, login, tpAccess = 0) {
 
         // ensure that typeAccess is a number
         if (isNaN(typeAccess)) {
@@ -76,12 +76,12 @@ function QualifiedUsers() {
      * Return a array with an object user and your access type
      * @param {Integer} index 
      */
-    this.getUser = function (index) {
+    this.getQUser = function (index) {
         // validate the parameter
         if (isNaN(index)) {
             throw "you must provide a integer parameter ( Users.getUser(index:Integer) )"
         }
-        return { user: users[index], typeAcess: access[index] };
+        return { user: users[index], typeAccess: access[index] };
     }
 
     // remove users by index
@@ -446,11 +446,11 @@ function Files() {
     };
 }
 
-function Task() {
-    let mId;
-    let mTitle;
-    let mDescription;
-    let mCreator;
+function Task(id, title, description, creator, dateCreation) {
+    let mId = id;
+    let mTitle = title;
+    let mDescription = description;
+    let mCreator = creator;
     let mTeam;
     let mPriority;
     let mType;
@@ -460,137 +460,167 @@ function Task() {
     let mPendencys;
     let mFiles;
     let mDeadLine;
-    let mDateStart
-    let mDateCreation;
+    let mDateStart;
+    let mDateCreation = dateCreation;
     let mDateFinish;
-    
-    function getId () {
+
+    this.getId = function () {
         return mId;
-    }
-    
-    function setId (Id) {
+    };
+
+    this.setId = function (Id) {
         mId = Id;
-    }
+    };
 
-    function getTitle () {
+    this.getTitle = function () {
         return mTitle;
-    }
-    
-    function setTitle (Title) {
+    };
+
+    this.setTitle = function (Title) {
         mTitle = Title;
-    }
+    };
 
-    function getDescription () {
+    this.getDescription = function () {
         return mDescription;
-    }
-    
-    function setDescription (Description) {
+    };
+
+    this.setDescription = function (Description) {
         mDescription = Description;
-    }
+    };
 
-    function getCreator () {
+    this.getCreator = function () {
         return mCreator;
-    }
-    
-    function setCreator (Creator) {
+    };
+
+    this.setCreator = function (Creator) {
         mCreator = Creator;
-    }
+    };
 
-    function getTeam () {
+    this.getTeam = function () {
         return mTeam;
-    }
-    
-    function setTeam (Team) {
+    };
+
+    this.setTeam = function (Team) {
         mTeam = Team;
-    }
+    };
 
-    function getPriority () {
+    this.getPriority = function () {
         return mPriority;
-    }
-    
-    function setPriority (Priority) {
+    };
+
+    this.setPriority = function (Priority) {
         mPriority = Priority;
-    }
+    };
 
-    function getType () {
+    this.getType = function () {
         return mType;
-    }
-    
-    function setType (Type) {
+    };
+
+    this.setType = function (Type) {
         mType = Type;
-    }
+    };
 
-    function getParent () {
+    this.getParent = function () {
         return mParent;
-    }
-    
-    function setParent (Parent) {
+    };
+
+    this.setParent = function (Parent) {
         mParent = Parent;
-    }
+    };
 
-    function getChildren () {
+    this.getChildren = function () {
         return mChildren;
-    }
-    
-    function setChildren (Children) {
+    };
+
+    this.setChildren = function (Children) {
         mChildren = Children;
-    }
+    };
 
-    function getNotes () {
+    this.getNotes = function () {
         return mNotes;
-    }
-    
-    function setNotes (Notes) {
+    };
+
+    this.setNotes = function (Notes) {
         mNotes = Notes;
-    }
+    };
 
-    function getPendencys () {
+    this.getPendencys = function () {
         return mPendencys;
-    }
-    
-    function setPendencys (Pendencys) {
+    };
+
+    this.setPendencys = function (Pendencys) {
         mPendencys = Pendencys;
-    }
+    };
 
-    function getFiles () {
+    this.getFiles = function () {
         return mFiles;
-    }
-    
-    function setFiles (Files) {
+    };
+
+    this.setFiles = function (Files) {
         mFiles = Files;
-    }
+    };
 
-    function getDeadLine () {
+    this.getDeadLine = function () {
         return mDeadLine;
-    }
-    
-    function setDeadLine (DeadLine) {
+    };
+
+    this.setDeadLine = function (DeadLine) {
         mDeadLine = DeadLine;
-    }
+    };
 
-    function getDateStart () {
+    this.getDateStart = function () {
         return mDateStart;
-    }
-    
-    function setDateStart (DateStart) {
+    };
+
+    this.setDateStart = function (DateStart) {
         mDateStart = DateStart;
-    }
+    };
 
-    function getDateCreation () {
+    this.getDateCreation = function () {
         return mDateCreation;
-    }
-    
-    function setDateCreation (DateCreation) {
+    };
+
+    this.setDateCreation = function (DateCreation) {
         mDateCreation = DateCreation;
-    }
+    };
 
-    function getDateFinish () {
+    this.getDateFinish = function () {
         return mDateFinish;
-    }
-    
-    function setDateFinish (DateFinish) {
+    };
+
+    this.setDateFinish = function (DateFinish) {
         mDateFinish = DateFinish;
-    }
+    };
 
 
+}
+
+function Tasks() {
+    let tasks = [];
+
+    this.add = function (Task) {
+        tasks.push(Task);
+    };
+
+    this.addNewTask = function (id, title, description, creator, dateCreation) {
+        let obj = new Task(id, title, description, creator, dateCreation);
+        tasks.push(obj);
+        return obj;
+    };
+
+    this.getTask = function (index) {
+        return tasks[index];
+    };
+
+    this.count = function () {
+        return tasks.length;
+    };
+
+    this.remove = function (index) {
+        tasks.splice(index, 1);
+    };
+
+    this.clear = function () {
+        tasks = [];
+    };
 }
